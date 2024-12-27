@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation files('libs/forge.jar')
+    implementation files('libs/asm-all.jar')
+    implementation files('libs/autoutils-1.6.4-1.0.1.jar')
+    implementation files('libs/lwjgl.jar')
+    implementation files('libs/lwjgl_util.jar')
+    implementation files('libs/Thaumcraft4.1.0g.zip') //!!!
+    implementation files('libs/twilightforest-1.6.4-1.20.5.jar')
+    implementation files('libs/NotEnoughItems 1.6.1.9.jar')
+    implementation files('libs/CodeChickenCore 0.9.0.9.jar')
+    implementation files('libs/gson-2.2.2.jar')
+    implementation files('libs/GeoStrata 1.6 v25z.zip') //!!!
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(7)
+    }
+}
+
+
+jar {
+    manifest {
+        attributes(
+                'Created-By': '1.7.0 (Oracle Corporation)',
+                'FMLCorePlugin': 'com.cpu.chiselbp.ChiselBPCoreMod',
+                'FMLCorePluginContainsFMLMod': '1'
+            )
+    }
+
+    archiveBaseName = 'chiselbp'
+
+    include("mcm*")
+    include("assets/**")
+    include("com/**")
+    include("*.cfg")
+    include("info/**/BP*.*")
+}

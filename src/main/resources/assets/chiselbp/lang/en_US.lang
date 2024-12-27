@@ -1,0 +1,82 @@
+item.tile.concrete.0.name=Concrete
+item.tile.concrete.1.name=Concrete
+item.tile.concrete.2.name=Concrete
+item.tile.concrete.3.name=Concrete
+item.tile.concrete.4.name=Concrete
+item.tile.concrete.5.name=Concrete
+item.tile.concrete.6.name=Concrete
+
+item.tile.sandstoneCalcareous.0.name=Calcareous Sandstone
+item.tile.sandstoneCalcareous.1.name=Calcareous Sandstone
+item.tile.sandstoneCalcareous.2.name=Calcareous Sandstone
+item.tile.sandstoneCalcareous.3.name=Calcareous Sandstone
+item.tile.sandstoneCalcareous.4.name=Calcareous Sandstone
+item.tile.sandstoneCalcareous.5.name=Calcareous Sandstone
+item.tile.sandstoneCalcareous.6.name=Calcareous Sandstone
+
+item.tile.hexPlating.0.name=Black Hex Plating
+item.tile.hexPlating.1.name=Red Hex Plating
+item.tile.hexPlating.2.name=Green Hex Plating
+item.tile.hexPlating.3.name=Brown Hex Plating
+item.tile.hexPlating.4.name=Blue Hex Plating
+item.tile.hexPlating.5.name=Purple Hex Plating
+item.tile.hexPlating.6.name=Cyan Hex Plating
+item.tile.hexPlating.7.name=Light Gray Hex Plating
+item.tile.hexPlating.8.name=Gray Hex Plating
+item.tile.hexPlating.9.name=Pink Hex Plating
+item.tile.hexPlating.10.name=Lime Hex Plating
+item.tile.hexPlating.11.name=Yellow Hex Plating
+item.tile.hexPlating.12.name=Light Blue Hex Plating
+item.tile.hexPlating.13.name=Magenta Hex Plating
+item.tile.hexPlating.14.name=Orange Hex Plating
+item.tile.hexPlating.15.name=White Hex Plating
+
+item.tile.antiBlock.0.name=Black Anti Block
+item.tile.antiBlock.1.name=Red Anti Block
+item.tile.antiBlock.2.name=Green Anti Block
+item.tile.antiBlock.3.name=Brown Anti Block
+item.tile.antiBlock.4.name=Blue Anti Block
+item.tile.antiBlock.5.name=Purple Anti Block
+item.tile.antiBlock.6.name=Cyan Anti Block
+item.tile.antiBlock.7.name=Light Gray Anti Block
+item.tile.antiBlock.8.name=Gray Anti Block
+item.tile.antiBlock.9.name=Pink Anti Block
+item.tile.antiBlock.10.name=Lime Anti Block
+item.tile.antiBlock.11.name=Yellow Anti Block
+item.tile.antiBlock.12.name=Light Blue Anti Block
+item.tile.antiBlock.13.name=Magenta Anti Block
+item.tile.antiBlock.14.name=Orange Anti Block
+item.tile.antiBlock.15.name=White Anti Block
+
+item.tile.blockFactory.0.name=Factory Block
+item.tile.blockFactory.1.name=Factory Block
+item.tile.blockFactory.2.name=Factory Block
+item.tile.blockFactory.3.name=Factory Block
+
+item.tile.netherBrick.0.name=Nether Brick
+
+item.tile.brick.0.name=Bricks
+item.tile.brick.1.name=Bricks
+item.tile.brick.2.name=Bricks
+item.tile.brick.3.name=Bricks
+item.tile.brick.4.name=Bricks
+item.tile.brick.5.name=Bricks
+
+item.tile.endStone.0.name=End Stone
+item.tile.endStone.1.name=End Stone
+item.tile.endStone.2.name=End Stone
+item.tile.endStone.3.name=End Stone
+item.tile.endStone.4.name=End Stone
+item.tile.endStone.5.name=End Stone
+item.tile.endStone.6.name=End Stone
+item.tile.endStone.7.name=End Stone
+item.tile.endStone.8.name=End Stone
+item.tile.endStone.9.name=End Stone
+item.tile.endStone.10.name=End Stone
+item.tile.endStone.11.name=End Stone
+item.tile.endStone.12.name=End Stone
+item.tile.endStone.13.name=End Stone
+item.tile.endStone.14.name=End Stone
+item.tile.endStone.15.name=End Stone
+item.tile.endStone2.0.name=End Stone
+item.tile.endStone2.1.name=End Stone

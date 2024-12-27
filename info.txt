@@ -1,0 +1,33 @@
+hex plating: stone around coal block
+antiblock: stone around glow-dust
+grimstone: stone around coal
+valentines: stone around pink dye
+void-stone: obsidian in corners, pearl in middle, stone in rest
+energized-void-stone: obsidian in corners, ender eye in middle, stone in rest
+lab: stone around quartz
+rebel/military: 
+
+
+paper wall:  paper around stick
+paper wall block: 4 paper wall
+waterstone: stone around water bucket
+tech: 4 iron, 5 stone, stone in corners and middle
+warning: stone around sign
+bone block:4 bones
+
+
+
+
+real woolen clay: wool + hardened clay
+
+
+
+
+
+
+
+
+
+
+
+

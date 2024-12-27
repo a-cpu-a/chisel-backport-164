@@ -1,0 +1,17 @@
+[
+{
+  "modid": "chiselbp",
+  "name": "ChiselBP",
+  "description": "This mod backports blocks from newer chisel versions (1.7.10, 1.12).",
+  "version": "1.0.0",
+  "credits": "",
+  "logoFile": "",
+  "mcversion": "1.6.4",
+  "url": "",
+  "updateUrl": "",
+  "authors": [ "cpu" ],
+  "parent":"",
+  "screenshots": [],
+  "dependencies": []
+}
+]
