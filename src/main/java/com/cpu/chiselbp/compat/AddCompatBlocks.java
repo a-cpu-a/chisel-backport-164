@@ -33,6 +33,11 @@ public class AddCompatBlocks {
     }
 
 
+    public static void addBlock(ItemStack block,String name)
+    {
+        Carving.chisel.addVariation(name, block.field_77993_c, block.field_77991_e, 99);
+        MinecraftForge.setBlockHarvestLevel(Block.field_71973_m[block.field_77993_c], block.field_77991_e, "chisel", 0);
+    }
     public static void addBlock(Block block,String name,int metadata)
     {
         Carving.chisel.addVariation(name, block.field_71990_ca, metadata, 99);
@@ -61,6 +66,9 @@ public class AddCompatBlocks {
 
             addBlock(block,"amber",0);
             addBlock(block,"amber",1);
+
+            ApEngCompat.addAll();
+
         } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException ignored) {
         }
 
@@ -75,8 +83,10 @@ public class AddCompatBlocks {
 
             }
 
+
         } catch (NoClassDefFoundError ignored) {
         }
+
         try {
             Class x = Class.forName("twilightforest.block.TFBlocks");
             Block block = (Block) x.getField("mazestone").get(null);

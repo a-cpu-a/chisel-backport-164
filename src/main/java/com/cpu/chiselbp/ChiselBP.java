@@ -53,7 +53,6 @@ manasteel block recipe (maybe port botania texture? )
 -v3x2
 metal eyes
 gold eye
-certus quartz (dont forget existing chisel stuffs)
 
 fix snakestone : MinecraftForge.setBlockHarvestLevel(Block.planks, i, "chisel", 0);
 fix braced planks
@@ -152,6 +151,8 @@ public class ChiselBP {
     public static BlockMarble blockAcacia2;
     public static BlockMarble blockCrimson2;
 
+    public static BlockMarble blockCertusQuartz;
+
     public static boolean 					configExists;
 
     static Configuration config;
@@ -248,6 +249,8 @@ public class ChiselBP {
     public static int DFLT_ID_DARK_OAK_M2 = 2940;
     public static int DFLT_ID_ACACIA_M2 = 2941;
     public static int DFLT_ID_CRIMSON_M2 = 2942;
+
+    public static int DFLT_ID_CERTUS_QUARTZ = 2943;
 
 
     public static boolean neiPlugin = true;
@@ -1475,6 +1478,23 @@ public class ChiselBP {
         blockAcacia2 = ModernWoodUtils.makePlanks2("acacia","Acacia",DFLT_ID_ACACIA_M2,false);
         blockCrimson2 = ModernWoodUtils.makePlanks2("crimson","Crimson",DFLT_ID_CRIMSON_M2,false);
 
+        {
+            blockCertusQuartz = new BlockMarble(this.getBlock("blockCertusQuartz",DFLT_ID_CERTUS_QUARTZ));
+            blockCertusQuartz.func_71848_c(0.8F).func_71894_b(0.8F).func_71884_a(Block.field_71976_h);
+            CarvableHelper ch = ((CarvableHelper)f.get(blockCertusQuartz));
+            ch.setBlockName("Block of Certus Quartz");
+
+            ch.addVariation("Certus quartz masonry", 0, "quartz/certus/masonryCertus");
+            ch.addVariation("Certus quartz circles", 1, "quartz/certus/certusChiseled");
+            ch.addVariation("Prismatic certus quartz", 2, "quartz/certus/certusPrismatic");
+            ch.addVariation("Prismatic certus quartz pattern", 3, "quartz/certus/certusPrismaticPattern");
+
+            register.invoke(ch,blockCertusQuartz, "certusQuartz");
+            Carving.chisel.registerOre("certusQuartz", "blockCertusQuartz");
+            //ExtensionUtilities.addModBlock2Chisel(Block.field_94339_ct,0,"quartz");
+            //ExtensionUtilities.addModBlock2Chisel(Block.field_94339_ct,1,"quartz");
+            //ExtensionUtilities.addModBlock2Chisel(Block.field_94339_ct,2,"quartz");
+        }
 
         NetworkRegistry.instance().registerGuiHandler(this, new IGuiHandler(){
             @Override
