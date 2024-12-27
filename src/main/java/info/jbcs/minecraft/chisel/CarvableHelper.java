@@ -27,6 +27,7 @@ public class CarvableHelper {
     public boolean					forbidChiseling	= false;
     String							blockName;
 
+    public void addVariation(String description, int metadata, String texture, Block block, int blockMeta) {}
     public void addVariation(String description, int metadata, Block bb, int blockMeta){}
     public void addVariation(String description, int metadata, String texture) {}
     public void addVariation(String description, int metadata, Block baseBlock) {}
@@ -40,4 +41,9 @@ public class CarvableHelper {
 
     public void setBlockName(String factory_block) {
     }
+
+
+
+
+    public void setBlockHarvestLevel(Block block, String tool, int level) {}
 }

@@ -55,6 +55,8 @@ metal eyes
 gold eye
 certus quartz (dont forget existing chisel stuffs)
 
+fix snakestone : MinecraftForge.setBlockHarvestLevel(Block.planks, i, "chisel", 0);
+
 
 * */
 
@@ -132,6 +134,23 @@ public class ChiselBP {
     public static BlockMarble blockBrickM2;
 
     public static BlockEmissive blockGlotek;
+
+
+    public static BlockMarble blockOak;
+    public static BlockMarble blockBirch;
+    public static BlockMarble blockSpruce;
+    public static BlockMarble blockJungle;
+    public static BlockMarble blockDarkOak;
+    public static BlockMarble blockAcacia;
+    public static BlockMarble blockCrimson;
+
+    public static BlockMarble blockOak2;
+    public static BlockMarble blockBirch2;
+    public static BlockMarble blockSpruce2;
+    public static BlockMarble blockJungle2;
+    public static BlockMarble blockDarkOak2;
+    public static BlockMarble blockAcacia2;
+    public static BlockMarble blockCrimson2;
 
     public static boolean 					configExists;
 
@@ -212,6 +231,23 @@ public class ChiselBP {
     public static int DFLT_ID_BRICK_M2 = 2927;
 
     public static int DFLT_ID_GLOTEK = 2928;
+
+
+    public static int DFLT_ID_OAK_M = 2929;
+    public static int DFLT_ID_BIRCH_M = 2930;
+    public static int DFLT_ID_SPRUCE_M = 2931;
+    public static int DFLT_ID_JUNGLE_M = 2932;
+    public static int DFLT_ID_DARK_OAK_M = 2933;
+    public static int DFLT_ID_ACACIA_M = 2934;
+    public static int DFLT_ID_CRIMSON_M = 2935;
+
+    public static int DFLT_ID_OAK_M2 = 2936;
+    public static int DFLT_ID_BIRCH_M2 = 2937;
+    public static int DFLT_ID_SPRUCE_M2 = 2938;
+    public static int DFLT_ID_JUNGLE_M2 = 2939;
+    public static int DFLT_ID_DARK_OAK_M2 = 2940;
+    public static int DFLT_ID_ACACIA_M2 = 2941;
+    public static int DFLT_ID_CRIMSON_M2 = 2942;
 
 
     public static boolean neiPlugin = true;
@@ -1218,6 +1254,7 @@ public class ChiselBP {
         {
 
             blockNeonite = new BlockEmissive(getBlock("blockNeonite",DFLT_ID_NEONITE));
+            blockNeonite.func_71848_c(1.0F);
 
 
             CarvableHelper ch = ((CarvableHelper)f.get(blockNeonite));
@@ -1265,7 +1302,7 @@ public class ChiselBP {
         {
 
             blockFrogLight = new BlockMarble(getBlock("blockFrogLight",DFLT_ID_FROGLIGHT));
-            blockFrogLight.func_71884_a(Block.field_71976_h).func_71848_c(1.0F);
+            blockFrogLight.func_71884_a(Block.field_71976_h).func_71848_c(1.0F).func_71900_a(1.0f);
 
 
             CarvableHelper ch = ((CarvableHelper)f.get(blockFrogLight));
@@ -1336,6 +1373,7 @@ public class ChiselBP {
             blockBrickM = new BlockMarble(this.getBlock("blockBrickM",DFLT_ID_BRICK_M));
             blockBrickM.func_71848_c(2.0F).func_71894_b(6.0F).func_71884_a(Block.field_71976_h);
             CarvableHelper ch = ((CarvableHelper)f.get(blockBrickM));
+            ch.setBlockName("Bricks");
 
             ch.addVariation("Array of bricks", 0, "bricks/array");
             ch.addVariation("Braided bricks", 1, "bricks/braid");
@@ -1360,6 +1398,7 @@ public class ChiselBP {
             blockBrickM2 = new BlockMarble(this.getBlock("blockBrickM2",DFLT_ID_BRICK_M2));
             blockBrickM2.func_71848_c(2.0F).func_71894_b(6.0F).func_71884_a(Block.field_71976_h);
             CarvableHelper ch = ((CarvableHelper)f.get(blockBrickM2));
+            ch.setBlockName("Bricks");
 
             ch.addVariation("Weaved bricks", 0, "bricks/weaver");
             ch.addVariation("Twisted bricks", 1, "bricks/twisted");
@@ -1383,6 +1422,7 @@ public class ChiselBP {
         {
 
             blockGlotek = new BlockEmissive(getBlock("blockGlotek",DFLT_ID_GLOTEK));
+            blockGlotek.func_71848_c(1.0F);
 
 
             CarvableHelper ch = ((CarvableHelper)f.get(blockGlotek));
@@ -1418,6 +1458,22 @@ public class ChiselBP {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockGlotek,8,0), "***","*X*","***",  '*',new ItemStack(blockNeonite, 1),'X',"dustGlowstone"));
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockGlotek,8,0), "***","*X*","***",  '*',new ItemStack(blockNeonite, 1),'X',new ItemStack(Item.field_77751_aT, 1)));
         }
+
+        blockOak = ModernWoodUtils.makePlanks("oak","Oak",DFLT_ID_OAK_M);
+        blockBirch = ModernWoodUtils.makePlanks("birch","Birch",DFLT_ID_BIRCH_M);
+        blockSpruce = ModernWoodUtils.makePlanks("spruce","Spruce",DFLT_ID_SPRUCE_M);
+        blockJungle = ModernWoodUtils.makePlanks("jungle","Jungle",DFLT_ID_JUNGLE_M);
+        blockDarkOak = ModernWoodUtils.makePlanks("dark_oak","Dark Oak",DFLT_ID_DARK_OAK_M);
+        blockAcacia = ModernWoodUtils.makePlanks("acacia","Acacia",DFLT_ID_ACACIA_M);
+        blockCrimson = ModernWoodUtils.makePlanks("crimson","Crimson",DFLT_ID_CRIMSON_M);
+
+        blockOak2 = ModernWoodUtils.makePlanks2("oak","Oak",DFLT_ID_OAK_M2,true);
+        blockBirch2 = ModernWoodUtils.makePlanks2("birch","Birch",DFLT_ID_BIRCH_M2,false);
+        blockSpruce2 = ModernWoodUtils.makePlanks2("spruce","Spruce",DFLT_ID_SPRUCE_M2,false);
+        blockJungle2 = ModernWoodUtils.makePlanks2("jungle","Jungle",DFLT_ID_JUNGLE_M2,false);
+        blockDarkOak2 = ModernWoodUtils.makePlanks2("dark_oak","Dark Oak",DFLT_ID_DARK_OAK_M2,false);
+        blockAcacia2 = ModernWoodUtils.makePlanks2("acacia","Acacia",DFLT_ID_ACACIA_M2,false);
+        blockCrimson2 = ModernWoodUtils.makePlanks2("crimson","Crimson",DFLT_ID_CRIMSON_M2,false);
 
 
         NetworkRegistry.instance().registerGuiHandler(this, new IGuiHandler(){

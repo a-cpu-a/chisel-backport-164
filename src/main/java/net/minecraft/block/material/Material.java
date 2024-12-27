@@ -23,6 +23,8 @@ public class Material {
     public static Material field_76246_e;
     /**leaves*/
     public static Material field_76257_i;
+    /**wood*/
+    public static Material field_76245_d;
     /**water*/
     public static Material field_76244_g;
     /**isSolid*/
