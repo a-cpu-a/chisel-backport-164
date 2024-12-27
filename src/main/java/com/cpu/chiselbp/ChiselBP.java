@@ -56,7 +56,7 @@ gold eye
 certus quartz (dont forget existing chisel stuffs)
 
 fix snakestone : MinecraftForge.setBlockHarvestLevel(Block.planks, i, "chisel", 0);
-
+fix braced planks
 
 * */
 
