@@ -57,6 +57,12 @@ gold eye
 fix snakestone : MinecraftForge.setBlockHarvestLevel(Block.planks, i, "chisel", 0);
 fix braced planks
 
+useful links:
+
+https://github.com/GTNewHorizons/Chisel/blob/29be0033d732b226c2077253d86ac063382a98c2/src/main/java/team/chisel/Features.java
+https://github.com/GTNewHorizons/Chisel/blob/29be0033d732b226c2077253d86ac063382a98c2/src/main/resources/assets/chisel/lang/en_US.lang
+https://mcreator.net/wiki/ore-dictionary-names-list
+
 * */
 
 @Mod(modid = "chiselbp", name = "ChiselBP", version = "1.0.0", dependencies = "required-after:Chisel")
