@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.src.*;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
@@ -39,6 +40,8 @@ public class Block {
     public static Block field_71981_t;
     /** stoneBricks */
     public static Block field_72007_bm;
+    /** grass */
+    public static BlockTallGrass field_71962_X;
     /** cobblestone */
     public static Block field_71978_w;
     /** gravel */
@@ -273,5 +276,14 @@ public class Block {
 
     protected void func_71905_a(float v, float v1, float v2, float v3, float v4, float v5) {
 
+    }
+
+    /** on  creative tab stuff*/
+    public void func_71879_a(Item item, CreativeTabs tabs, List list) {
+    }
+
+    /**set creative tab*/
+    protected Block func_71849_a(CreativeTabs tabChisel) {
+        return null;
     }
 }

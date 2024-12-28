@@ -1,6 +1,7 @@
 package info.jbcs.minecraft.chisel;
 
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.StepSound;
 
 public class Chisel {
@@ -29,4 +30,11 @@ public class Chisel {
     public static BlockMarble blockCobblestone;
     public static BlockMarble stoneBrick;
     public static Chisel instance;
+
+    static int RenderEldritchId;
+    static int RenderCTMId;
+    static int RenderCarpetId;
+
+
+    public static CreativeTabs tabChisel;
 }

@@ -2,10 +2,12 @@ package info.jbcs.minecraft.chisel;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CarvableHelper {
 
@@ -42,8 +44,15 @@ public class CarvableHelper {
     public void setBlockName(String factory_block) {
     }
 
+    public CarvableVariation getVariation(int metadata) {
+        return null;
+    }
+
 
 
 
     public void setBlockHarvestLevel(Block block, String tool, int level) {}
+
+    public void registerSubBlocks(Block block, CreativeTabs tabs, List list) {
+    }
 }

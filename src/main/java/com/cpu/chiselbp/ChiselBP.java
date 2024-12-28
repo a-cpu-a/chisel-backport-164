@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.world.World;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
@@ -62,6 +63,7 @@ useful links:
 https://github.com/GTNewHorizons/Chisel/blob/29be0033d732b226c2077253d86ac063382a98c2/src/main/java/team/chisel/Features.java
 https://github.com/GTNewHorizons/Chisel/blob/29be0033d732b226c2077253d86ac063382a98c2/src/main/resources/assets/chisel/lang/en_US.lang
 https://mcreator.net/wiki/ore-dictionary-names-list
+https://github.com/Sharpik/Minecraft_forge_1.6.4_deobfuscated/blob/master/
 
 * */
 
@@ -72,7 +74,7 @@ public class ChiselBP {
     public static BlockMarble				blockWoolenClay;
     public static BlockMarble				blockNetherBrick;
     public static BlockMarble				blockFactory;
-    public static BlockMarble				blockColoredSand;
+    public static BPBlockCarvableSand				blockColoredSand;
     public static BlockMarble				blockCalcareousSandstone;
     public static BlockDyeableGlowingOverlay blockHexPlating;
     public static BlockPoweredMarble    	blockRedstone;
@@ -158,6 +160,9 @@ public class ChiselBP {
     public static BlockMarble blockCrimson2;
 
     public static BlockMarble blockCertusQuartz;
+
+    public static BlockMarble blockHempcrete;
+    public static BPBlockCarvableSand blockHempcreteSand;
 
     public static boolean 					configExists;
 
@@ -257,6 +262,9 @@ public class ChiselBP {
     public static int DFLT_ID_CRIMSON_M2 = 2942;
 
     public static int DFLT_ID_CERTUS_QUARTZ = 2943;
+
+    public static int DFLT_ID_HEMPCRETE = 2944;
+    public static int DFLT_ID_HEMPCRETE_SAND = 2945;
 
 
     public static boolean neiPlugin = true;
@@ -362,15 +370,17 @@ public class ChiselBP {
 
         }
         {
-            blockColoredSand = new BlockMarble(getBlock("coloredSand",DFLT_ID_COLORED_SAND),Material.field_76251_o);
-            blockColoredSand.func_71848_c(0.5f).func_71894_b(4.0f).func_71884_a(Block.field_71972_l);
+            blockColoredSand = new BPBlockCarvableSand(getBlock("coloredSand",DFLT_ID_COLORED_SAND),Material.field_76251_o);
+            blockColoredSand.func_71848_c(0.5f).func_71894_b(0.5f).func_71884_a(Block.field_71972_l);
 
-            CarvableHelper ch = ((CarvableHelper)f.get(blockColoredSand));
+            CarvableHelper ch = blockColoredSand.ch;
+
             for (int i = 0; i < Utils.colors.length; i++) {
                 ch.setBlockName(Utils.textColors[i]+" Sand");
                 ch.addVariation(  Utils.textColors[i] + " colored sand", i, "coloredSand/"+ Utils.colors[i]);
             }
             register.invoke(ch, blockColoredSand, "blockColoredSand");
+
             for (int i = 0; i < Utils.colors.length; i++) {
                 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockColoredSand, 8, i), "***", "*X*", "***", '*', "sand", 'X', Utils.dyeOres[i]));
                 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockColoredSand, 8, i), "***", "*X*", "***", '*', new ItemStack(Block.field_71939_E, 1), 'X', Utils.dyeOres[i]));
@@ -1502,6 +1512,41 @@ public class ChiselBP {
             //ExtensionUtilities.addModBlock2Chisel(Block.field_94339_ct,2,"quartz");
         }
 
+        {
+            blockHempcreteSand = new BPBlockCarvableSand(getBlock("blockHempcreteSand",DFLT_ID_HEMPCRETE_SAND),Material.field_76251_o);
+            blockHempcreteSand.func_71848_c(0.5f).func_71894_b(0.5f).func_71884_a(Block.field_71972_l);
+
+
+            CarvableHelper ch = blockHempcreteSand.ch;
+            for (int i = 0; i < Utils.colors.length; i++) {
+                ch.setBlockName(Utils.textColors[i]+" Hempcrete Powder");
+                ch.addVariation(  Utils.textColors[i] + " colored hempcrete powder", i, "hempCrete/sand/"+ Utils.colors[i]);
+            }
+            register.invoke(ch, blockHempcreteSand, "hempcretesand");
+            for (int i = 0; i < Utils.colors.length; i++) {
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockHempcreteSand, 8, i), "X**", "***", "**4", '*', "sand", 'X', Utils.dyeOres[i],'4',new ItemStack(Block.field_71962_X, 1,2)));
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockHempcreteSand, 8, i), "X**", "***", "**4", '*', new ItemStack(Block.field_71939_E, 1), 'X', Utils.dyeOres[i],'4',new ItemStack(Block.field_71962_X, 1,2)));
+
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockHempcreteSand, 8, i), "X**", "***", "**4", '*', "sand", 'X', new ItemStack(Item.field_77756_aW.field_77779_bT, 1,i),'4',new ItemStack(Block.field_71962_X, 1,2)));
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockHempcreteSand, 8, i), "X**", "***", "**4", '*', new ItemStack(Block.field_71939_E, 1), 'X', new ItemStack(Item.field_77756_aW.field_77779_bT, 1,i),'4',new ItemStack(Block.field_71962_X, 1,2)));
+            }
+        }
+
+        {
+            blockHempcrete = new BlockMarble(getBlock("blockHempcrete",DFLT_ID_HEMPCRETE));
+            blockHempcrete.func_71848_c(0.8f).func_71894_b(10.0f);
+
+            CarvableHelper ch = ((CarvableHelper)f.get(blockHempcrete));
+            for (int i = 0; i < Utils.colors.length; i++) {
+                ch.setBlockName(Utils.textColors[i]+" Hempcrete");
+                ch.addVariation(  Utils.textColors[i] + " colored hempcrete", i, "hempCrete/concrete/"+ Utils.colors[i]);
+            }
+            register.invoke(ch, blockHempcrete, "hempcrete");
+            for (int i = 0; i < Utils.colors.length; i++) {
+                FurnaceRecipes.func_77602_a().addSmelting(blockHempcreteSand.field_71990_ca, i, new ItemStack(blockHempcrete.field_71990_ca,1,i), 0.1f);
+            }
+        }
+
         NetworkRegistry.instance().registerGuiHandler(this, new IGuiHandler(){
             @Override
             public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -1513,6 +1558,7 @@ public class ChiselBP {
                 return new BPGuiChisel(player.field_71071_by, new BPInventoryChiselSelection(null));
             }
         });
+
 
         MinecraftForge.EVENT_BUS.register(new ChiselController());
 
