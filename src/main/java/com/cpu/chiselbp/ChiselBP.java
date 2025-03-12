@@ -26,6 +26,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -164,6 +165,9 @@ public class ChiselBP {
     public static BlockMarble blockHempcrete;
     public static BPBlockCarvableSand blockHempcreteSand;
 
+    public static BlockMarblePane blockPaperwall;
+    public static BlockMarble blockPaper;
+
     public static boolean 					configExists;
 
     static Configuration config;
@@ -266,6 +270,9 @@ public class ChiselBP {
     public static int DFLT_ID_HEMPCRETE = 2944;
     public static int DFLT_ID_HEMPCRETE_SAND = 2945;
 
+    public static int DFLT_ID_PAPERWALL = 2946;
+    public static int DFLT_ID_PAPER = 2947;
+
 
     public static boolean neiPlugin = true;
 
@@ -297,12 +304,14 @@ public class ChiselBP {
         neiPlugin = config.get("misc","neiPlugin",true).getBoolean(true);
 
         Field f = null;
+        Field fPane = null;
         Field fOre = null;
         Field fGlass = null;
         Field crvMeta = null;
         Method register = null;
         try {
             f = BlockMarble.class.getDeclaredField("carverHelper");
+            fPane = BlockMarblePane.class.getDeclaredField("carverHelper");
             fOre = BlockMarbleTexturedOre.class.getDeclaredField("carverHelper");
             fGlass = BlockGlassCarvable.class.getDeclaredField("carverHelper");
             register = CarvableHelper.class.getDeclaredMethod("register", Block.class, String.class);
@@ -311,7 +320,7 @@ public class ChiselBP {
             crvMeta.setAccessible(true);
             fGlass.setAccessible(true);
 
-
+            fPane.setAccessible(true);
             f.setAccessible(true);
             fOre.setAccessible(true);
             //((CarvableHelper)f.get(Chisel.blockConcrete)).addVariation("Concrete Test", 11, "concrete/default");
@@ -1545,6 +1554,71 @@ public class ChiselBP {
             for (int i = 0; i < Utils.colors.length; i++) {
                 FurnaceRecipes.func_77602_a().addSmelting(blockHempcreteSand.field_71990_ca, i, new ItemStack(blockHempcrete.field_71990_ca,1,i), 0.1f);
             }
+        }
+
+
+        try {
+            Constructor<BlockMarblePane> m = BlockMarblePane.class.getDeclaredConstructor(int.class, Material.class,boolean.class);
+            m.setAccessible(true);
+            blockPaperwall = m.newInstance(getBlock("blockPaperwall",DFLT_ID_PAPERWALL),Material.field_76248_c,true);
+            blockPaperwall.func_71848_c(0.5f).func_71894_b(0.5f);
+
+            CarvableHelper ch = ((CarvableHelper)fPane.get(blockPaperwall));
+
+            ch.setBlockName("Paperwall");
+            ch.addVariation("Boxed Paperwall", 0, "paper/box");
+            ch.addVariation("Middle Striked Paperwall", 1, "paper/throughMiddle");
+            ch.addVariation("Crossed Paperwall", 2, "paper/cross");
+            ch.addVariation("Six Sectioned Paperwall", 3, "paper/sixSections");
+            ch.addVariation("Vertically Striked Paperwall", 4, "paper/vertical");
+            ch.addVariation("Horizontally Striked Paperwall", 5, "paper/horizontal");
+            ch.addVariation("Floral Adorned Paperwall", 6, "paper/floral");
+            ch.addVariation("Plain Paperwall", 7, "paper/plain");
+            ch.addVariation("Door Shaped Paperwall", 8, "paper/door");
+
+            register.invoke(ch, blockPaperwall, "paperwall");
+
+
+            GameRegistry.addRecipe(
+                    new ShapedOreRecipe(
+                            new ItemStack(blockPaperwall, 8),
+                            "ppp",
+                            "psp",
+                            "ppp",
+                            ('p'),
+                            new ItemStack(Item.field_77759_aK,1),
+                            ('s'),
+                            "stickWood"));
+        } catch (NoSuchMethodException | InstantiationException e) {
+            throw new RuntimeException(e);
+        }
+        {
+
+            blockPaper = new BlockMarble(getBlock("blockPaperwallBlock",DFLT_ID_PAPER),Material.field_76248_c);
+            blockPaper.func_71848_c(0.5f).func_71894_b(0.5f);
+
+            CarvableHelper ch = ((CarvableHelper)f.get(blockPaper));
+
+            ch.setBlockName("Paperwall Block");
+            ch.addVariation("Boxed Paperwall", 0, "paper/box");
+            ch.addVariation("Middle Striked Paperwall", 1, "paper/throughMiddle");
+            ch.addVariation("Crossed Paperwall", 2, "paper/cross");
+            ch.addVariation("Six Sectioned Paperwall", 3, "paper/sixSections");
+            ch.addVariation("Vertically Striked Paperwall", 4, "paper/vertical");
+            ch.addVariation("Horizontally Striked Paperwall", 5, "paper/horizontal");
+            ch.addVariation("Floral Adorned Paperwall", 6, "paper/floral");
+            ch.addVariation("Plain Paperwall", 7, "paper/plain");
+            ch.addVariation("Door Shaped Paperwall", 8, "paper/door");
+
+            register.invoke(ch, blockPaper, "paperwall_block");
+
+            GameRegistry.addRecipe(
+                    new ShapedOreRecipe(
+                            new ItemStack(blockPaper, 4),
+                            "pp",
+                            "pp",
+                            ('p'),
+                            blockPaperwall));
         }
 
         NetworkRegistry.instance().registerGuiHandler(this, new IGuiHandler(){

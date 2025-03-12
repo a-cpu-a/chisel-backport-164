@@ -38,6 +38,8 @@ public class Item {
     public static Item field_77748_bA;
     /** emerald */
     public static Item field_77817_bH;
+    /** paper */
+    public static Item field_77759_aK;
     /**
     * glowstone
     * */

@@ -18,3 +18,18 @@ item.tile.concrete.11.name=Concrete
 item.tile.concrete.12.name=Concrete
 item.tile.concrete.13.name=Concrete
 item.tile.concrete.14.name=Concrete
+
+
+
+
+tile.chisel.paperwall.name=Paperwall
+tile.chisel.paperwall_block.name=Paperwall Block
+tile.paperwall.0.desc=Boxed Paperwall
+tile.paperwall.1.desc=Middle Striked Paperwall
+tile.paperwall.2.desc=Crossed Paperwall
+tile.paperwall.3.desc=Six Sectioned Paperwall
+tile.paperwall.4.desc=Vertically Striked Paperwall
+tile.paperwall.5.desc=Horizontally Striked Paperwall
+tile.paperwall.6.desc=Floral Adorned Paperwall
+tile.paperwall.7.desc=Plain Paperwall
+tile.paperwall.8.desc=Door Shaped Paperwall
