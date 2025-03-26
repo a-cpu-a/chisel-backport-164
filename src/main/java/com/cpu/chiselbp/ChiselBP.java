@@ -164,6 +164,7 @@ public class ChiselBP {
     public static BlockMarblePane blockPaperwall;
     public static BlockMarble blockPaper;
     public static BlockMarble blockEndPearl;
+    public static BlockMarble blockThaumium;
 
     public static boolean 					configExists;
 
@@ -270,6 +271,7 @@ public class ChiselBP {
     public static int DFLT_ID_PAPERWALL = 2946;
     public static int DFLT_ID_PAPER = 2947;
     public static int DFLT_ID_END_PEARL = 2948;
+    public static int DFLT_ID_THAUMIUM = 2949;
 
 
     public static boolean neiPlugin = true;
@@ -1640,6 +1642,29 @@ public class ChiselBP {
                             "pp",
                             ('p'),
                             new ItemStack(Item.field_77730_bn, 1)));
+        }
+        {
+            blockThaumium = new BlockMarble(ChiselBP.getBlock("blockThaumium",DFLT_ID_THAUMIUM));
+            blockThaumium.func_71884_a(Block.field_71977_i).func_71848_c(2.0F).func_71894_b(15.0f);
+
+            String folder = "thaumium/";
+
+            CarvableHelper ch = ((CarvableHelper)MetalUtils.f.get(blockThaumium));
+            ch.setBlockName("Thaumium Block");
+            ch.addVariation("Beveled thaumium", 0, folder+"bevel");
+            ch.addVariation("Thaumium chunks", 1, folder+"chunks");
+            ch.addVariation("Thaumium diamond lattice", 2, folder+"lattice");
+            ch.addVariation("Ornate thaumium circles", 3, folder+"ornate");
+            ch.addVariation("Thaumium ridged planks", 4, folder+"planks");
+            ch.addVariation("Purple runes", 5, folder+"purplerunes");
+            ch.addVariation("Red runes", 6, folder+"runes");
+            ch.addVariation("Thaumic eye", 7, folder+"thaumicEyeSegment");
+            ch.addVariation("Small thaumium blocks", 8, folder+"small");
+            ch.addVariation("Diagonal thaumium bricks", 9, folder+"thaumDiagonalBricks");
+            ch.addVariation("Big thaumium bricks", 10, folder+"thaumiumBigBricks");
+            ch.addVariation("Block of thaumium", 11, folder+"thaumiumblock");
+            ch.addVariation("Thaumium totem", 12, folder+"totem");
+            MetalUtils.register.invoke(ch,blockThaumium,"thaumium");
         }
 
         NetworkRegistry.instance().registerGuiHandler(this, new IGuiHandler(){

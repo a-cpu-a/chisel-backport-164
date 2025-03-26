@@ -57,6 +57,8 @@ public class AddCompatBlocks {
             Block block = (Block) x.getField("blockCosmeticSolid").get(null);
             addBlock(block,"obsidian",1);
 
+            addBlock(block,"thaumium",4);
+
             addBlock(block,"tallow",5);
 
             addBlock(block,"arcane",6);
