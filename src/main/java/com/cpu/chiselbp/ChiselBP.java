@@ -49,12 +49,8 @@ warning
 
 redstone lamp (chrono lamps?)
 pumpkin
-eye stuff (thaumium, gold)
 
 manasteel block recipe (maybe port botania texture? )
--v3x2
-metal eyes
-gold eye
 
 fix snakestone : MinecraftForge.setBlockHarvestLevel(Block.planks, i, "chisel", 0);
 fix braced planks
@@ -167,6 +163,7 @@ public class ChiselBP {
 
     public static BlockMarblePane blockPaperwall;
     public static BlockMarble blockPaper;
+    public static BlockMarble blockEndPearl;
 
     public static boolean 					configExists;
 
@@ -272,6 +269,7 @@ public class ChiselBP {
 
     public static int DFLT_ID_PAPERWALL = 2946;
     public static int DFLT_ID_PAPER = 2947;
+    public static int DFLT_ID_END_PEARL = 2948;
 
 
     public static boolean neiPlugin = true;
@@ -825,11 +823,11 @@ public class ChiselBP {
             //ExtensionUtilities.addModBlock2Chisel(Block.field_94339_ct,1,"quartz");
             //ExtensionUtilities.addModBlock2Chisel(Block.field_94339_ct,2,"quartz");
         }
-        blockTerraSteel = MetalUtils.createModMetal("blockTerraSteel",DFLT_ID_TERRA_STEEL,"terrasteel","Terrasteel","blockTerrasteel","elementiumEye");
+        blockTerraSteel = MetalUtils.createModMetal("blockTerraSteel",DFLT_ID_TERRA_STEEL,"terrasteel","Terrasteel","blockTerrasteel");
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTerraSteel, 32, 6), "*Z*", "ZXZ", "*Z*", '*', "stone", 'X', new ItemStack(Block.field_71980_u, 1),'Z',new ItemStack(Item.field_77703_o, 1)));
 
-        blockManasteel = MetalUtils.createModMetal("blockManasteel",DFLT_ID_MANASTEEL,"manasteel","Manasteel","blockManasteel","elementiumEye");
-        blockElementium = MetalUtils.createModMetal("blockElementium",DFLT_ID_ELEMENTIUM,"elementium","Elementium","blockElementium","elementiumEye");
+        blockManasteel = MetalUtils.createModMetal("blockManasteel",DFLT_ID_MANASTEEL,"manasteel","Manasteel","blockManasteel");
+        blockElementium = MetalUtils.createModMetal("blockElementium",DFLT_ID_ELEMENTIUM,"elementium","Elementium","blockElementium");
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockElementium, 32, 6), "*Z*", "Z Z", "*Z*", '*', "dyeMagenta", 'Z',"ingotIron"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockElementium, 32, 6), "*Z*", "Z Z", "*Z*", '*', new ItemStack(Item.field_77756_aW.field_77779_bT, 1,13),'Z',new ItemStack(Item.field_77703_o, 1)));
 
@@ -876,7 +874,7 @@ public class ChiselBP {
             ch.addVariation("Gold machine", 4, folder+"machine");
             ch.addVariation("Gold scaffolding", 5, folder+"scaffold");
             ch.addVariation("Thermal style block of gold", 6, folder+"thermal");
-            //TODO: gold eye
+            ch.addVariation("Golden eye", 7, "gold/goldEye");
             MetalUtils.register.invoke(ch,block,"gold");
         }
         {
@@ -1619,6 +1617,29 @@ public class ChiselBP {
                             "pp",
                             ('p'),
                             blockPaperwall));
+        }
+        {
+
+            blockEndPearl = new BlockMarble(getBlock("blockEndPearl", DFLT_ID_END_PEARL),Material.field_76246_e);
+            blockEndPearl.func_71848_c(3.0F).func_71894_b(6.0F).func_71884_a(Block.field_71976_h);
+
+            CarvableHelper ch = ((CarvableHelper)f.get(blockEndPearl));
+
+            ch.setBlockName("Enderpearl Block");
+            ch.addVariation("Zelda", 0, "ender_pearl_block/enderZelda");
+            ch.addVariation("Resonant Bricks", 1, "ender_pearl_block/resonantBricks");
+            ch.addVariation("Resonant Solid", 2, "ender_pearl_block/resonantSolid");
+            ch.addVariation("Ender Eye", 3, "ender_pearl_block/enderEye");
+
+            register.invoke(ch, blockEndPearl, "enderpearl_block");
+
+            GameRegistry.addRecipe(
+                    new ShapedOreRecipe(
+                            new ItemStack(blockEndPearl, 1),
+                            "pp",
+                            "pp",
+                            ('p'),
+                            new ItemStack(Item.field_77730_bn, 1)));
         }
 
         NetworkRegistry.instance().registerGuiHandler(this, new IGuiHandler(){

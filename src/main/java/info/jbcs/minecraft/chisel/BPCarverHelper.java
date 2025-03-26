@@ -19,6 +19,7 @@ public class BPCarverHelper extends CarvableHelper {
     public static final int				R16  			= 13;
     public static final int				SCTM  			= 14;
     public static final int				ALT_R  			= 15; //-ar
+    public static final int				V3_2  			= 16; //-v3x2
 
     public BPCarverHelper(){}
 
@@ -61,6 +62,7 @@ public class BPCarverHelper extends CarvableHelper {
             boolean r4 = Chisel.class.getResource(path + "-r4.png") != null;
             boolean sctm = Chisel.class.getResource(path + "-ctms.png") != null;
             boolean ar = Chisel.class.getResource(path + "-ar.png") != null;
+            boolean v3x2 = Chisel.class.getResource(path + "-v3x2.png") != null;
 
             if (ctm3) {
                 variation.kind = 3;
@@ -88,6 +90,8 @@ public class BPCarverHelper extends CarvableHelper {
                 variation.kind = CTMH;
             } else if (ctmv && top) {
                 variation.kind = CTMV;
+            }else if (v3x2) {
+                variation.kind = V3_2;
             } else if (bot && top && side) {
                 variation.kind = TOPBOTSIDE;
             } else if (top && side) {
@@ -127,6 +131,8 @@ public class BPCarverHelper extends CarvableHelper {
             case V9_CTM:
             case V4_CTM:
                 return variation.icon;
+            case V3_2:
+                return variation.variations9.icons[1];
             case R9:
             case R16:
                 return variation.variations9.icons[4];
@@ -155,6 +161,8 @@ public class BPCarverHelper extends CarvableHelper {
             case V9:
             case V9_CTM:
                 return variation.variations9.icons[Utils.xyzs2Idx(x,y,z,side,3,3)];
+            case V3_2:
+                return variation.variations9.icons[Utils.xyzs2Idx(x,y,z,side,3,2)];
             case V4:
             case V4_CTM:
                 return variation.variations9.icons[Utils.xyzs2Idx(x,y,z,side,2,2)];
@@ -279,6 +287,9 @@ public class BPCarverHelper extends CarvableHelper {
                         break;
                     case V4:
                         variation.variations9=new TextureSubmap(register.func_94245_a(modName + variation.texture+"-v4"),2,2);
+                        break;
+                    case V3_2:
+                        variation.variations9=new TextureSubmap(register.func_94245_a(modName + variation.texture+"-v3x2"),3,3);
                         break;
                     case CTMX:
                         variation.icon=register.func_94245_a(modName + variation.texture);

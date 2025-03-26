@@ -26,11 +26,11 @@ public class MetalUtils {
             e.printStackTrace();
         }
     }
-    public static BlockMarble createModMetal(String configId,int defaultId,String name,String upperName,String oreDict,String eyeName)
+    public static BlockMarble createModMetal(String configId,int defaultId,String name,String upperName,String oreDict)
     {
-        return createModMetal(configId, defaultId, name, upperName, oreDict, eyeName,name,true);
+        return createModMetal(configId, defaultId, name, upperName, oreDict,name,true);
     }
-    public static BlockMarble createModMetal(String configId,int defaultId,String name,String upperName,String oreDict,String eyeName,String folder,boolean hasCard)
+    public static BlockMarble createModMetal(String configId,int defaultId,String name,String upperName,String oreDict,String folder,boolean hasCard)
     {
         BlockMarble block = new BlockMarble(ChiselBP.getBlock(configId,defaultId));
         block.func_71884_a(Block.field_71977_i).func_71848_c(2.0F).func_71894_b(10.0f);
@@ -47,7 +47,8 @@ public class MetalUtils {
             ch.addVariation(upperName+" crate", 4, folder+"/crate");
             ch.addVariation(upperName+" with a iron border", 5, folder+"/egregious");
             ch.addVariation("Thermal style "+name+" block", 6, folder+"/thermal");
-            //TODO: eye "elementiumEye"
+            ch.addVariation("Eye of "+name, 7, folder+"/elementiumEye");
+
             register.invoke(ch,block,name);
             Carving.chisel.registerOre(name, oreDict);
         } catch (IllegalAccessException | InvocationTargetException e) {
