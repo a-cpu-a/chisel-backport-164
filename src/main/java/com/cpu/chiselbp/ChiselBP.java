@@ -165,6 +165,9 @@ public class ChiselBP {
     public static BlockMarble blockPaper;
     public static BlockMarble blockEndPearl;
     public static BlockMarble blockThaumium;
+    public static BlockMarble blockDesertStone;
+    public static BlockMarble blockRungsten;
+    public static BlockGlowingArcaneRune blockDesertStoneRune;
 
     public static boolean 					configExists;
 
@@ -272,6 +275,9 @@ public class ChiselBP {
     public static int DFLT_ID_PAPER = 2947;
     public static int DFLT_ID_END_PEARL = 2948;
     public static int DFLT_ID_THAUMIUM = 2949;
+    public static int DFLT_ID_DESERT_STONE = 2950;
+    public static int DFLT_ID_RUNGSTEN = 2951;
+    public static int DFLT_ID_DESERT_STONE_RUNE = 2952;
 
 
     public static boolean neiPlugin = true;
@@ -902,7 +908,7 @@ public class ChiselBP {
             Carving.chisel.registerOre("arcane", "blockStoneArcane");
         }
         {
-            blockArcaneRune = new BlockGlowingArcaneRune(ChiselBP.getBlock("blockArcaneRune",DFLT_ID_ARCANE_RUNE));
+            blockArcaneRune = new BlockGlowingArcaneRune(ChiselBP.getBlock("blockArcaneRune",DFLT_ID_ARCANE_RUNE),true);
             blockArcaneRune.func_71884_a(Block.field_71976_h).func_71848_c(1.5F).func_71894_b(6.0f);
 
             CarvableHelper ch = ((CarvableHelper)f.get(blockArcaneRune));
@@ -1665,6 +1671,56 @@ public class ChiselBP {
             ch.addVariation("Block of thaumium", 11, folder+"thaumiumblock");
             ch.addVariation("Thaumium totem", 12, folder+"totem");
             MetalUtils.register.invoke(ch,blockThaumium,"thaumium");
+        }
+        {
+            blockDesertStone = new BlockMarble(getBlock("desertStoneBlock",DFLT_ID_DESERT_STONE));
+            blockDesertStone.func_71884_a(Block.field_71976_h).func_71848_c(0.8F);
+
+
+            CarvableHelper ch = ((CarvableHelper)f.get(blockDesertStone));
+            ch.setBlockName("Desert Stone");
+            ch.addVariation("Desert Stone Block", 0, "chiselbp:desertstone/block");
+            ch.addVariation("Desert Stone Bricks", 1, "chiselbp:desertstone/bricks");
+            ch.addVariation("Desert Stone Dust", 2, "chiselbp:desertstone/dust");
+            ch.addVariation("Dusty Desert Stone Block", 3, "chiselbp:desertstone/dusty_block");
+            ch.addVariation("Dusty Desert Stone Bricks", 4, "chiselbp:desertstone/dusty_bricks");
+            register.invoke(ch,blockDesertStone,"desert_stone");
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockDesertStone, 9, 0), "***", "*X*", "***", '*', "blockSandstone", 'X', "dyeRed"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockDesertStone, 9, 0), "***", "*X*", "***", '*', new ItemStack(Block.field_71957_Q, 1), 'X', new ItemStack(Item.field_77756_aW.field_77779_bT, 1,1)));
+        }
+        {
+            blockDesertStoneRune = new BlockGlowingArcaneRune(ChiselBP.getBlock("blockDesertStoneRune",DFLT_ID_DESERT_STONE_RUNE),false);
+            blockDesertStoneRune.func_71884_a(Block.field_71976_h).func_71848_c(1.5F).func_71894_b(6.0f);
+
+            CarvableHelper ch = ((CarvableHelper)f.get(blockDesertStoneRune));
+            for (int i = 0; i < 16; i++) {
+                ch.setBlockName(Utils.textColors[i]+" Desert Stone Rune");
+                ch.addVariation(Utils.textColors[i]+" desert stone rune", i, "chiselbp:desertstone/runesGlowOverlay");
+                blockDesertStoneRune.underlayCH.addVariation("",i,"chiselbp:desertstone/runesGlowBase");
+            }
+
+            ExtensionUtilities.registerDupe(ch,blockDesertStoneRune,"desert_stone","desert_stone_rune");
+        }
+        {
+            blockRungsten = new BlockMarble(ChiselBP.getBlock("blockRungsten",DFLT_ID_RUNGSTEN));
+            blockRungsten.func_71884_a(Block.field_71977_i).func_71848_c(2.0F).func_71894_b(15.0f);
+
+            String folder = "chiselbp:rungsten/";
+
+            CarvableHelper ch = ((CarvableHelper)MetalUtils.f.get(blockRungsten));
+            ch.setBlockName("Rungsten Block");
+            ch.addVariation("Rungsten Dust", 0, folder+"dust");
+            ch.addVariation("Stainless Rungsten Block", 1, folder+"stainless_block");
+            ch.addVariation("Stainless Rungsten Tiles", 2, folder+"stainless_tiles");
+            ch.addVariation("Stainless Rungsten Pillar", 3, folder+"stainless_pillar");
+            ch.addVariation("Rusty Rungsten Block", 4, folder+"rusty_block");
+            ch.addVariation("Rusty Rungsten Tiles", 5, folder+"rusty_tiles");
+            ch.addVariation("Rusty Rungsten Pillar", 6, folder+"rusty_pillar");
+            MetalUtils.register.invoke(ch,blockRungsten,"rungsten");
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockRungsten, 32, 0), "***", "*X*", "***", '*', "ingotIron", 'X', "dyeCyan"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockRungsten, 32, 0), "***", "*X*", "***", '*', "ingotIron", 'X', new ItemStack(Item.field_77756_aW.field_77779_bT, 1,6)));
         }
 
         NetworkRegistry.instance().registerGuiHandler(this, new IGuiHandler(){

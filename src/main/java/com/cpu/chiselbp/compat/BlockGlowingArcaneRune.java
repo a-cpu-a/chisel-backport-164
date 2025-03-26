@@ -14,9 +14,12 @@ import net.minecraft.world.IBlockAccess;
 
 public class BlockGlowingArcaneRune extends BlockMarble implements ILayeredBlock {
     public BPCarverHelper underlayCH;
-    public BlockGlowingArcaneRune(int i) {
+    public boolean forArcane;
+
+    public BlockGlowingArcaneRune(int i,boolean forArcane) {
         super(i);
         underlayCH = new BPCarverHelper();
+        this.forArcane= forArcane;
     }
 
     @Override
@@ -48,8 +51,14 @@ public class BlockGlowingArcaneRune extends BlockMarble implements ILayeredBlock
     public void func_94332_a(IconRegister register) {
         super.func_94332_a(register);
         underlayCH.registerIcons("chisel",this,register);
-        itemUnderlayIcon = register.func_94245_a("chisel:arcane/runesGlowBase");
-        itemOverlayIcon = register.func_94245_a("chisel:arcane/runesGlowOverlay");
+        if(forArcane) {
+            itemUnderlayIcon = register.func_94245_a("chisel:arcane/runesGlowBase");
+            itemOverlayIcon = register.func_94245_a("chisel:arcane/runesGlowOverlay");
+        } else {
+
+            itemUnderlayIcon = register.func_94245_a("chiselbp:desertstone/runesGlowBase");
+            itemOverlayIcon = register.func_94245_a("chiselbp:desertstone/runesGlowOverlay");
+        }
     }
 
     @Override
